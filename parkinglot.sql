@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.33, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.30, for Win32 (AMD64)
 --
 -- Host: localhost    Database: parkinglot
 -- ------------------------------------------------------
--- Server version	5.6.33
+-- Server version	5.6.30
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -61,7 +61,7 @@ CREATE TABLE `building_unit` (
   PRIMARY KEY (`SEQ_NO`),
   UNIQUE KEY `BLDG_SEQ_NO` (`BLDG_SEQ_NO`,`UNIT_NO`),
   CONSTRAINT `unit_in_a_building` FOREIGN KEY (`BLDG_SEQ_NO`) REFERENCES `building_table` (`SEQ_NO`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5825 DEFAULT CHARSET=utf8 COMMENT='One of the room numbers in a building';
+) ENGINE=InnoDB AUTO_INCREMENT=5823 DEFAULT CHARSET=utf8 COMMENT='One of the room numbers in a building';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +98,7 @@ CREATE TABLE `car_arrival` (
   KEY `valid_enteredAs_tag` (`TagEnteredAs`),
   KEY `true_attendant` (`AttendantID`),
   CONSTRAINT `once_attendant` FOREIGN KEY (`AttendantID`) REFERENCES `users_osp` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2251 DEFAULT CHARSET=utf8 COMMENT='records vehicle arrival at a gate ';
+) ENGINE=InnoDB AUTO_INCREMENT=8732 DEFAULT CHARSET=utf8 COMMENT='records vehicle arrival at a gate ';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -134,7 +134,7 @@ CREATE TABLE `cardriver` (
   KEY `idx_on_affiliation` (`L2_NO`),
   CONSTRAINT `EXISTING_L2_AFFILI_KEY` FOREIGN KEY (`L2_NO`) REFERENCES `l2_affiliation` (`L2_NO`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `EXISTING_UNIT_KEY` FOREIGN KEY (`UNIT_SEQ_NO`) REFERENCES `building_unit` (`SEQ_NO`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3022 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=83293 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -173,7 +173,7 @@ CREATE TABLE `eboard_lednotice` (
 
 LOCK TABLES `eboard_lednotice` WRITE;
 /*!40000 ALTER TABLE `eboard_lednotice` DISABLE KEYS */;
-INSERT INTO `eboard_lednotice` VALUES (0,0,'',5,11,1,0,0,0),(1,0,'어서오십시오',0,0,0,0,2,6),(2,1,'',0,4,0,1,2,0),(3,0,'',1,0,2,1,0,0);
+INSERT INTO `eboard_lednotice` VALUES (0,1,'오즈파킹 방문을 환영합니다.',0,0,1,0,0,0),(1,1,'어서오십시오',0,0,0,0,2,6),(2,1,'가나다라마바2',3,0,0,1,2,0),(3,1,'가나다라마바2',3,0,2,1,0,0);
 /*!40000 ALTER TABLE `eboard_lednotice` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -201,7 +201,7 @@ CREATE TABLE `eboard_settings` (
 
 LOCK TABLES `eboard_settings` WRITE;
 /*!40000 ALTER TABLE `eboard_settings` DISABLE KEYS */;
-INSERT INTO `eboard_settings` VALUES (1,'어디론가 떠나요',0,0,0,1),(2,'',3,3,0,0),(3,'',1,0,0,0),(4,'',5,2,2,1);
+INSERT INTO `eboard_settings` VALUES (1,'오즈 주차장 방문을 환영합니당',0,2,2,1),(2,'',4,3,3,1),(3,'',1,3,1,0),(4,'',2,0,0,1);
 /*!40000 ALTER TABLE `eboard_settings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -243,7 +243,7 @@ CREATE TABLE `gatedevices` (
 
 LOCK TABLES `gatedevices` WRITE;
 /*!40000 ALTER TABLE `gatedevices` DISABLE KEYS */;
-INSERT INTO `gatedevices` VALUES (1,'남1문','127.0.0.1','6121',2,'127.0.0.1','6161',0,0,'1','127.0.0.1','8082',0,0,'1',3,136,29.8,10,'2016-08-25 00:11:59'),(2,'강변후문','127.0.0.1','8083',0,'127.0.0.1','8084',0,0,'1','127.0.0.1','8085',0,0,'1',0,0,29.11,100,'2016-08-12 17:53:10'),(3,'(anonymous)','127.0.0.1','8080',0,'127.0.0.1','8080',0,1,'2','127.0.0.1','8080',0,1,'2',0,0,0,NULL,NULL),(4,'(anonymous)','127.0.0.1','8080',0,'127.0.0.1','8080',0,0,'','127.0.0.1','8080',0,0,'',0,0,0,NULL,NULL);
+INSERT INTO `gatedevices` VALUES (1,'남1문','127.0.0.1','6121',2,'127.0.0.1','8080',0,0,'1','127.0.0.1','8082',0,0,'1',8,25,10.9,10,'2016-10-01 11:03:25'),(2,'강변후문','127.0.0.1','8083',0,'127.0.0.1','60084',0,0,'1','127.0.0.1','8085',0,0,'1',3,88,29.4,10,'2016-10-01 11:06:41'),(3,'(anonymous)','127.0.0.1','8080',0,'127.0.0.1','8080',0,1,'2','127.0.0.1','8080',0,1,'2',0,0,0,NULL,NULL),(4,'(anonymous)','127.0.0.1','8080',0,'127.0.0.1','8080',0,0,'','127.0.0.1','8080',0,0,'',0,0,0,NULL,NULL);
 /*!40000 ALTER TABLE `gatedevices` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -259,7 +259,7 @@ CREATE TABLE `l1_affiliation` (
   `PARTY_NAME` varchar(60) NOT NULL,
   PRIMARY KEY (`L1_NO`),
   UNIQUE KEY `PARTY_NAME` (`PARTY_NAME`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8 COMMENT='Higher Level Affiliation Names';
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8 COMMENT='Higher Level Affiliation Names';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -287,7 +287,7 @@ CREATE TABLE `l2_affiliation` (
   KEY `L2_AFF_NAME_IDX` (`PARTY_NAME`),
   KEY `good_Level1` (`L1_NO`),
   CONSTRAINT `good_Level1` FOREIGN KEY (`L1_NO`) REFERENCES `l1_affiliation` (`L1_NO`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8 COMMENT='Lower Level Affiliation Names';
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8 COMMENT='Lower Level Affiliation Names';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -314,7 +314,7 @@ CREATE TABLE `loginrecord` (
   PRIMARY KEY (`recNO`),
   KEY `realAttendant` (`userID`),
   CONSTRAINT `once_attendant2` FOREIGN KEY (`userID`) REFERENCES `users_osp` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=245 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=902 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -323,7 +323,6 @@ CREATE TABLE `loginrecord` (
 
 LOCK TABLES `loginrecord` WRITE;
 /*!40000 ALTER TABLE `loginrecord` DISABLE KEYS */;
-INSERT INTO `loginrecord` VALUES (244,'admin',NULL,'2016-09-21 13:58:19');
 /*!40000 ALTER TABLE `loginrecord` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -361,7 +360,7 @@ CREATE TABLE `settingstable` (
 
 LOCK TABLES `settingstable` WRITE;
 /*!40000 ALTER TABLE `settingstable` DISABLE KEYS */;
-INSERT INTO `settingstable` VALUES ('(주)오픈주차장','',0,1,'ko','KR',1,1,300,1,1280,960,2,3271307,120,8000,1280);
+INSERT INTO `settingstable` VALUES ('오즈 주차장','',0,0,'ko','KR',110,1,300,1,1280,960,2,3271307,30,8000,1000);
 /*!40000 ALTER TABLE `settingstable` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -377,7 +376,7 @@ CREATE TABLE `systemrun` (
   `stopTm` timestamp NULL DEFAULT NULL,
   `startTm` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`recNo`)
-) ENGINE=InnoDB AUTO_INCREMENT=903 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1651 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -386,7 +385,6 @@ CREATE TABLE `systemrun` (
 
 LOCK TABLES `systemrun` WRITE;
 /*!40000 ALTER TABLE `systemrun` DISABLE KEYS */;
-INSERT INTO `systemrun` VALUES (902,'2016-09-21 13:58:21',NULL);
 /*!40000 ALTER TABLE `systemrun` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -463,4 +461,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-21 23:00:14
+-- Dump completed on 2016-10-01 18:58:54
